@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  # get 'demo/index'
+  # Defaukt route
+  root :to => "demo#index"
+  # Catch all route
+  match ':controller(/:action(/:id(.:format)))', :via => :get
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
