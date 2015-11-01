@@ -1,11 +1,11 @@
-<% @page_title = "Subjects - New" %>
+<% @page_title = "Section - New" %>
 <%= link_to("<< Back to List", {:action => 'index'}, :class => 'back-link') %>
 
-<div class="subjects new">
+<div class="section new">
 	<h2>Create Subject</h2>
 
-	<%= form_for(:subject, :url => {:action => 'create'}) do |f| %>
-	<table summary="Subject form fields">
+	<%= form_for(:section, :url => {:action => 'create'}) do |f| %>
+	<table summary="Section form fields">
 	  	<tr>
 	  		<th>Name</th>
 	  		<td><%= f.text_field(:name) %></td>
@@ -18,6 +18,18 @@
 	  		<th>Visible</th>
 	  		<td><%= f.check_box(:visable) %></td>
 	  	</tr>
+	  	<tr>
+	  		<th>Page ID</th>
+	  		<td><%= f.text_field(:page_id) %></td>
+	  	</tr>
+	  	<tr>
+	  		<th>Content Type</th>
+	  		<td><%= f.text_field(:content_type) %></td>
+	  	</tr>
+	  	<tr>
+	  		<th>Content</th>
+	  		<td><%= f.text_field(:content) %></td>
+	  	</tr>
 	</table>
 
 	<div class="form-buttons">
@@ -26,4 +38,3 @@
 
 	<% end %>
 </div>
-

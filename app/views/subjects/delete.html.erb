@@ -1,2 +1,20 @@
-<h1>Subjects#delete</h1>
-<p>Find me in app/views/subjects/delete.html.erb</p>
+<% @page_title = "Subjects - Delete" %>
+<%= link_to("<< Back to List", {:action => 'index'}, :class => 'back-link') %>
+
+<div class="subjects delete">
+	<h2>Delete Subject</h2>
+
+	
+
+	<%= form_for(:subject, :url => {:action => 'destroy', :id => @subject.id}) do |f| %>
+
+		<p>Are you sure you want to remove "<%= @subject.name %>"? </p>
+
+		<p class="referenece-name"><%= @subject.name %>, at position: <%= @subject.position %>? </p>
+
+	<div class="form-buttons">
+		<%= submit_tag("Delete Subject") %>
+	</div>
+
+	<% end %>
+</div>

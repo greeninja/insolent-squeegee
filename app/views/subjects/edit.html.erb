@@ -1,3 +1,4 @@
+<% @page_title = "Subjects - Edit" %>
 <%= link_to("<< Back to List", {:action => 'index'}, :class => 'back-link') %>
 
 <div class="subjects edit">
@@ -15,7 +16,7 @@
 	  	</tr>
 	  	<tr>
 	  		<th>Visible</th>
-	  		<td><%= f.text_field(:visable) %></td>
+	  		<td><%= f.check_box(:visable) %></td>
 	  	</tr>
 	</table>
 

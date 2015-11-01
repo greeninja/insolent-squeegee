@@ -1,6 +1,6 @@
 class SubjectsController < ApplicationController
 
-  layout false
+  layout "admin"
 
   def index
     @subjects = Subject.sorted
@@ -20,6 +20,7 @@ class SubjectsController < ApplicationController
     # Save the object
     if @subject.save
     # If save succeeds, redirect to the index action
+      flash[:notice] = "Subject '#{@subject.name}' created successfully"
       redirect_to(:action => 'index')
     else
     # If save fails, redisplay the form so user can fix problems
@@ -28,11 +29,18 @@ class SubjectsController < ApplicationController
   end
 
   def edit
+    # Find it
     # Find an existing object using for parameters
     @subject = Subject.find(params[:id])
+  end
+
+  def update
+    # Update it
     # If the object updates
+    @subject = Subject.find(params[:id])
     if @subject.update_attributes(subject_params)
     # If update succeeds, redirect to the index action
+      flash[:notice] = "Subject '#{@subject.name}' updated successfully"
       redirect_to(:action => 'show', :id => @subject.id)
     else
     # If update fails, redisplay the form so user can fix problems
@@ -41,12 +49,19 @@ class SubjectsController < ApplicationController
   end
 
   def delete
+    @subject = Subject.find(params[:id])
+  end
+
+  def destroy
+    @subject = Subject.find(params[:id]).destroy
+    flash[:notice] = "Subject '#{@subject.name}' deleted successfully"
+    redirect_to(:action => 'index')
   end
 
   private
     def subject_params
       # Same as using "params[:subject]", except that it:
-      # - raises an error is :subject is not present
+      # - raises an error if :subject is not present
       # - allows listed attributes to be mass-assigned
       params.require(:subject).permit(:name, :position, :visable)
     end
