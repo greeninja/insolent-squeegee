@@ -1,5 +1,5 @@
 # insolent-squeegee
-ITIL based Incident, Change and Project Management - TEST ONLY
+TEST ONLY
 
 This is an early test and is likely to be aweful.
 
