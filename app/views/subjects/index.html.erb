@@ -3,6 +3,9 @@
 	<h2>Subjects</h2>
 
 	<%= link_to("Add New Subject", {:action => 'new'}, :class => 'action new') %>
+    <!-- This adds pluralisation -->
+    
+    <div><p><%= pluralize(@subjects.size, 'subject') %> found</p></div>
 
 	<table class="listing" summary="Subjects list">
 		<tr class="header">
@@ -13,10 +16,10 @@
 			<th>Actions</th>
 		</tr>
 		<% @subjects.each do |subject| %>
-		<tr>
+        <tr class="<%= cycle('odd', 'even') %>">
 			<td><%= subject.position %></td>
 			<td><%= subject.name %></td>
-			<td class="center"><%= subject.visable ? 'Yes' : 'No' %></td>
+			<td class="center"><%= status_tag(subject.visable) %></td>
 			<td class="center"><%= subject.pages.size %></td>
 			<td class="actions">
 				<%= link_to("Show", {:action => 'show', :id => subject.id}, :class => 'action show') %>

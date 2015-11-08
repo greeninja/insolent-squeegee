@@ -19,9 +19,11 @@
 			<td><%= section.position %></td>
 			<td><%= section.name %></td>
 			<td><%= section.page_id %></td>
-			<td class="center"><%= section.visable ? 'Yes' : 'No' %></td>
+            <td class="center"><%= status_tag(section.visable) %></td>
 			<td><%= section.content_type %></td>
-			<td><%= section.content %></td>
+			<!-- Too much content for index
+            <td><%= section.content %></td>
+            Can be found in edit and show -->
 			<td class="actions">
 				<%= link_to("Show", {:action => 'show', :id => section.id}, :class => 'action show') %>
 				<%= link_to("Edit", {:action => 'edit', :id => section.id}, :class => 'action edit') %>

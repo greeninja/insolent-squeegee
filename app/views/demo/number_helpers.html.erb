@@ -1,0 +1,17 @@
+<h2>Currency</h2>
+<%= number_to_currency(34.5, :unit => "£ ") %>
+<hr />
+    
+<h2>Number to human</h2>
+<%= number_to_human_size(123456789, :precision => 2) %>
+<hr />
+
+<h2>number to phone</h2>
+<%= number_to_phone('01234567890', :area_code => false, :delimiter => ' ') %>
+<br>
+<%= number_to_phone(1234567890,
+    :area_code => true,
+    :delimiter => '',
+    ) 
+%>
+<hr />

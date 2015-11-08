@@ -15,6 +15,8 @@ class DemoController < ApplicationController
   def other_hello
   	redirect_to(:controller => 'demo', :action => 'index')
   end
-
+    
+  def text_helpers
+  end
 
 end
