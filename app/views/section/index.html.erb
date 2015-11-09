@@ -8,7 +8,7 @@
 		<tr class="header">
 			<th>&nbsp;</th>
 			<th>Name</th>
-			<th>Page ID</th>
+			<th>Page</th>
 			<th>Visable</th>
 			<th>Content Type</th>
 			<th>Content</th>
@@ -18,7 +18,7 @@
 		<tr>
 			<td><%= section.position %></td>
 			<td><%= section.name %></td>
-			<td><%= section.page_id %></td>
+            <td><%= section.page.name if section.page %></td>
             <td class="center"><%= status_tag(section.visable) %></td>
 			<td><%= section.content_type %></td>
 			<!-- Too much content for index
