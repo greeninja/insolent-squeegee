@@ -1,6 +1,8 @@
 class Subject < ActiveRecord::Base
 
     has_many :pages
+    
+    validates_presence_of :name
 
 	scope :visable, lambda { where(:visable => true) }
 	scope :invisable, lambda { where(:visable => false) }

@@ -67,6 +67,6 @@ class SubjectsController < ApplicationController
       # Same as using "params[:subject]", except that it:
       # - raises an error if :subject is not present
       # - allows listed attributes to be mass-assigned
-      params.require(:subject).permit(:name, :position, :visable)
+        params.require(:subject).permit(:name, :position, :visable, :created_at)
     end
 end
