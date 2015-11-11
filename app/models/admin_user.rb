@@ -7,6 +7,10 @@ class AdminUser < ActiveRecord::Base
 	has_many :section_edits
 	has_many :sections, :through => :section_edits
     
+    # Scopes for Admin Users
+#    scope :name, lambda {"users.first_name, users.last_name"}
+    scope :sorted, lambda { order("admin_users.last_name ASC").order("admin_users.first_name ASC") }
+
 EMAIL_REGEX = /\A[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}\Z/
 FORBIDDEN_USERNAMES = ['littlebopeep','humptydumpty','marymary']
   validates_presence_of :first_name
@@ -45,9 +49,9 @@ validate :username_is_allowed
         end
     end
     
-    def no_new_users_on_saturday
-        if Time.now.wday == 6
-            errors[:base] << "No new users on Saturdays."
-        end
-    end
+#    def no_new_users_on_saturday
+#        if Time.now.wday == 6
+#            errors[:base] << "No new users on Saturdays."
+#        end
+#    end
 end
