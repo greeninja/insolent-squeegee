@@ -5,6 +5,9 @@ class Page < ActiveRecord::Base
     
     acts_as_list :scope => :subject
     
+    before_validation :add_default_permalink
+    after_save :touch_subject
+    
     validates_presence_of :name
     validates_length_of :name, :maximum => 255
     validates_presence_of :permalink
@@ -20,4 +23,20 @@ class Page < ActiveRecord::Base
 	scope :search, lambda {|query|
 	  where(["name LIKE ?", "%#{query}%"])
 	}
+    
+    private
+    
+    def add_default_permalink
+        if permalink.blank?
+            self.permalink = "#{id}-#{name.parameterize}"
+        end
+    end
+    
+    def touch_subject
+        # touch is similar to:
+        # subject.update_attribute(:updated_at, Time.now)
+        subject.touch
+    end
+    
+    
 end
