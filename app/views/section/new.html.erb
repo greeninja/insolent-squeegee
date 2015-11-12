@@ -7,7 +7,7 @@
 	<%= form_for(:section, :url => {:action => 'create', :page_id => @page.id}) do |f| %>
       <%= render(:partial => "form", :locals => {:f => f}) %>
 	<div class="form-buttons">
-		<%= submit_tag("Create Subject") %>
+        <%= submit_tag("Create Section") %>
 	</div>
 
 	<% end %>
