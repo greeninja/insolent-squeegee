@@ -8,6 +8,7 @@
     <% when 'HTML' %>
       <%= raw(sanitize(section.content, :tags => ['strong', 'em', 'a'])) %>
     <% when 'text' %>
-    <p><%= section.content %></p>
+      <p><%= section.content %></p>
+    <% end %>
 </div>
 <% end %>
