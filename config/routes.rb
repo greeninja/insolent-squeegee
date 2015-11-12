@@ -1,12 +1,10 @@
 Rails.application.routes.draw do
 
-  get 'public/index'
-
-  get 'public/show'
-
   # get 'demo/index'
   # Defaukt route
-  root :to => "demo#index"
+  root :to => "public#index"
+    # Public route
+  get 'show/:permalink', :to => 'public#show'
   # Route /admin to access/index 
   get 'admin', :to => "access#index"
   # Catch all route
