@@ -8,7 +8,7 @@
 
     <%= form_for(:user, :url => {:action => 'destroy', :id => @user.id}) do |f| %>
 
-    <p>Are you sure you want to remove "<%= @user.first_name %> <%= @user.last_name %>"? </p>
+    <p>Are you sure you want to remove "<%= @user.name %>"? </p>
 
     <p class="referenece-name">With username "<%= @user.username %>"? </p>
 

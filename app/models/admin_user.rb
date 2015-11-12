@@ -54,4 +54,9 @@ validate :username_is_allowed
 #            errors[:base] << "No new users on Saturdays."
 #        end
 #    end
+
+    def name
+        "#{first_name} #{last_name}"
+    end
+
 end

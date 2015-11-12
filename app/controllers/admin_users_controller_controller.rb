@@ -15,7 +15,7 @@ class AdminUsersControllerController < ApplicationController
     @user = AdminUser.new(user_params)
     if @user.save
     # If save succeeds, redirect to the index action
-      flash[:notice] = "User '#{@user.first_name}, #{@user.last_name}' created successfully"
+      flash[:notice] = "User '#{@user.name}' created successfully"
       redirect_to(:action => 'index')
     else
     # If save fails, redisplay the form so user can fix problems
@@ -33,7 +33,7 @@ class AdminUsersControllerController < ApplicationController
     @user = AdminUser.find(params[:id])
     if @user.update_attributes(user_params)
     # If update succeeds, redirect to the index action
-        flash[:notice] = "Subject '#{@user.first_name} #{@user.last_name}' updated successfully"
+        flash[:notice] = "Subject '#{@user.name}' updated successfully"
         redirect_to(:action => 'index')
     else
     # If update fails, redisplay the form so user can fix problems
@@ -48,7 +48,7 @@ class AdminUsersControllerController < ApplicationController
 
     def destroy
       @user = AdminUser.find(params[:id]).destroy
-      flash[:notice] = "User '#{@user.first_name} #{@user.last_name}' deleted successfully"
+      flash[:notice] = "User '#{@user.name}' deleted successfully"
       redirect_to(:action => 'index')
     end
     
