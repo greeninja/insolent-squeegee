@@ -3,3 +3,10 @@
 
 <%= link_to('hello page 2', {:controller => 'demo', :action => 'hello'}) %><br>
 <%= link_to('hello with params', {:controller => 'demo', :action => 'hello', :page => 5, :id => 20}) %>
+<hr />
+
+<%= name = "Kevin" %>
+
+<%= link_to('Roar', '#', :onclick => "jsRoar('#{j(name)}'); return true;") %><br />
+
+<%= javascript_tag("jsRaor('#{j(name)}');") %>

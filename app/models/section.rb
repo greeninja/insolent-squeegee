@@ -2,6 +2,17 @@ class Section < ActiveRecord::Base
 	belongs_to :page
 	has_many :section_edits
 	has_many :editors, :through => :section_edits, :class_name => "AdminUser"
+    
+    acts_as_list :scope => :page
+    
+    after_save :touch_page
+    
+    CONTENT_TYPES = ['text', 'HTML']
+    
+    validates_presence_of :name
+    validates_length_of :name, :maximum => 255
+    validates_inclusion_of :content_type, :in => CONTENT_TYPES, :message => "must be one of: #{CONTENT_TYPES.join(', ')}"
+    validates_presence_of :content
 
 	scope :visable, lambda { where(:visable => true) }
 	scope :invisable, lambda { where(:visable => false) }
@@ -10,4 +21,13 @@ class Section < ActiveRecord::Base
 	scope :search, lambda {|query|
 	  where(["name LIKE ?", "%#{query}%"])
 	}
+    
+    private
+    
+    def touch_page
+        # touch is similar to:
+        # subject.update_attribute(:updated_at, Time.now)
+        page.touch
+    end
+    
 end

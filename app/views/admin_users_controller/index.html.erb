@@ -1,0 +1,32 @@
+<% @page_title = "Users" %>
+<%= link_to("<< Back to Menu", {:controller => 'access', :action => 'index'}, :class => 'back-link') %>
+
+<div class="subjects index">
+	<h2>Admin Users</h2>
+     
+    <%=  %>
+    <%= link_to(image_tag('plus_sign.png', :size => '11x11', :alt => '+') + " Add New User", {:action => 'new'}, :class => 'action new') %>
+    <!-- This adds pluralisation -->
+    
+    <div><p><%= pluralize(@users.size, 'user') %> found</p></div>
+
+	<table class="listing" summary="User list">
+		<tr class="header">
+			<th>Name</th>
+            <th>Username</th>
+			<th>email</th>
+			<th>Actions</th>
+		</tr>
+        <% @users.each do |user| %>
+        <tr class="<%= cycle('odd', 'even') %>">
+            <td><%= user.name %></td>
+            <td><%= user.username %></td>
+            <td><%= mail_to(user.email) %></td>
+			<td class="actions">
+                <%= link_to("Edit", {:action => 'edit', :id => user.id}, :class => 'action edit') %>
+                <%= link_to("Delete", {:action => 'delete', :id => user.id}, :class => 'action delete') %>
+			</td>
+		</tr>
+		<% end %>
+	</table>
+</div>
