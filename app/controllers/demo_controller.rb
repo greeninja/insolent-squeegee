@@ -26,6 +26,9 @@ class DemoController < ApplicationController
     # render(:text => "test" #syntax error - missing closing bracket
     # render(:text => @something.upcase) # undefined method
     # render(:text => "1" + 1) # add string to integer
+  end  
+
+  def logging	  
     logger.debug("this is a debug log message")
     logger.info("This is an Info log message")
     logger.warn("this is a Warn log message")
