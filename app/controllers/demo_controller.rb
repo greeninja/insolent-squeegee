@@ -23,7 +23,7 @@ class DemoController < ApplicationController
   end
 
   def make_error
-    # render(:text => "test") #syntax error
+    # render(:text => "test" #syntax error - missing closing bracket
     # render(:text => @something.upcase) # undefined method
     # render(:text => "1" + 1) # add string to integer
   end
